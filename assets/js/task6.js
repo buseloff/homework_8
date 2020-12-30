@@ -28,7 +28,6 @@ function SumOfNumbers(userNumber) {
 
 //Функция вычисления и вывода значений квадратa Пифагора
 function SquareOfPifagor(userDateOfBirth) {
-
   //Если первая цифра 0 она удаляется
   if (userDateOfBirth[0] == "0") {
     userDateOfBirth = userDateOfBirth.slice(1);
@@ -77,4 +76,56 @@ function SquareOfPifagor(userDateOfBirth) {
 }
 
 //Вызов функции
+console.log("Астрологический квадрат Пифагора:");
 SquareOfPifagor(userDateOfBirth);
+
+console.log("-------------------------------------");
+
+//Функция вычисления и вывода значений математического квадратa Пифагора
+function SquareOfPifagorMath() {
+  
+  console.log("Математический квадрат Пифагора:");
+  //Массив для вычисления значений квадарата
+  let linesOfSquare = [];
+  //Массив для форматированного вывода строк квадарата, чтобы каждое значение занимало по 2 символа
+  let linesOfSquareString = [];
+  for (let i = 0; i <= 9; i++) {
+    if (i == 0) {
+      linesOfSquare.push(" ");
+      for (let j = 1; j <= 10; j++) {
+        linesOfSquare.push(j);
+      }
+      for (let k = 0; k <= 10; k++) {
+        if (linesOfSquare[k] > 9) {
+          linesOfSquareString.push(String(linesOfSquare[k]));
+          continue;
+        }
+        linesOfSquareString.push(String(linesOfSquare[k]) + " ");
+      }
+      console.log(linesOfSquareString.join(" "));
+      linesOfSquare.length = 0;
+      linesOfSquareString.length = 0;
+
+      continue;
+    }
+
+    linesOfSquare.push(i);
+    linesOfSquare.push(i);
+    for (let j = 1; j <= 9; j++) {
+      linesOfSquare.push(linesOfSquare[linesOfSquare.length - 1] + i);
+    }
+    for (let k = 0; k <= 10; k++) {
+      if (linesOfSquare[k] > 9) {
+        linesOfSquareString.push(String(linesOfSquare[k]));
+        continue;
+      }
+      linesOfSquareString.push(String(linesOfSquare[k]) + " ");
+    }
+    console.log(linesOfSquareString.join(" "));
+    linesOfSquare.length = 0;
+    linesOfSquareString.length = 0;
+  }
+}
+
+//Вызов функции
+SquareOfPifagorMath();
